@@ -32,7 +32,7 @@
 ################################################################################
 
 # Location of the CUDA Toolkit
-CUDA_PATH ?= /usr/local/cuda
+CUDA_PATH ?= /opt/nvidia/hpc_sdk/Linux_x86_64/22.1/compilers/
 
 ##############################
 # start deprecated interface #
@@ -156,8 +156,15 @@ else ifneq ($(TARGET_ARCH),$(HOST_ARCH))
         HOST_COMPILER ?= powerpc64le-linux-gnu-g++
     endif
 endif
+
+CUDA_PATH="/opt/nvidia/hpc_sdk/Linux_x86_64/22.1/compilers/"
+
 HOST_COMPILER ?= g++
 NVCC          := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
+
+
+$(info $$CUDA_PATH is [${CUDA_PATH}])
+$(info $$NVCC is [${NVCC}])
 
 # internal flags
 NVCCFLAGS   := -m${TARGET_SIZE}
