@@ -160,7 +160,7 @@ endif
 CUDA_PATH="/opt/nvidia/hpc_sdk/Linux_x86_64/22.1/compilers/"
 
 HOST_COMPILER ?= g++
-NVCC          := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
+NVCC          := nvcc -ccbin $(HOST_COMPILER)
 
 
 $(info $$CUDA_PATH is [${CUDA_PATH}])
